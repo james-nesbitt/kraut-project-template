@@ -1,0 +1,3 @@
+- Type: GitClone
+  path: 
+  Url: git@github.com:james-nesbitt/kraut-project-template.git
