@@ -1,0 +1,34 @@
+# Assetd
+assets/public/*
+assets/private/*
+assets/backup/*
+backup/*
+
+# Source stuff that should come from a build
+source/vendor
+source/web/core
+source/web/modules/contrib
+source/web/themes/contrib
+source/web/profiles/contrib
+
+# Drupal tempalate and default stuff
+source/web/sites/example.*
+source/web/sites/*/default.*
+source/web/sites/*/services.local.yml
+source/web/sites/*/settings.local.php
+
+# Drupal assets (will likely be mapped anyway)
+source/web/sites/*/files/*
+
+# Stupid OSX garbage
+.DS_Store
+
+# Editor files
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Some other sharing tools
+.stfolder
+.stignore
+.stglobalignore

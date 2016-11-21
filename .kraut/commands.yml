@@ -1,0 +1,86 @@
+#
+# COMMANDS
+#
+# Each entry defines a service that offers a command that can
+# be used withing the scope of the project.
+#
+# @KRAUT: this can be used in the form: 
+#    $/> kraut {command} {flags to pass to the container}
+#
+
+# Give a ZSH tool shell with access to the project containers
+shell:
+  description: Give a command shell, with access to the application
+  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  hostname: "shell"
+  working_dir: /app
+  volumes_from:
+    - source
+    - assets
+  volumes:
+    - "!:/app/pwd"
+    - "./:/app/project"
+    - "./source:/app/source"
+    - "./settings:/app/settings"
+    - "./assets:/app/assets" 
+    - "./backups:/app/backup"
+    - "./settings/drush:/app/.drush"
+    - "./settings/drupal-console:/app/.drupal"
+
+    - "~/.gitconfig:/app/.gitconfig:ro"
+    - "~/.ssh:/app/.ssh:ro"
+  links:
+    - db:db.app
+    - fpm:fpm.app
+    - www:www.app
+
+# Initialize a new Drupal project using the composer project
+drupal-init:
+  description: Create a new Drupal8 project in ./source
+  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  hostname: "shell"
+  entrypoint:
+    - composer 
+    - create-project 
+    - drupal-composer/drupal-project:8.x-dev 
+    - source
+    - "--no-interaction"
+  working_dir: /app/pwd
+  volumes:
+    - "!:/app/pwd"
+
+    - "~/.gitconfig:/app/.gitconfig:ro"
+    - "~/.ssh:/app/.ssh:ro"
+
+# Drupal Console
+drupal:
+  description: Run drupal console on the application
+  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  working_dir: /app/web
+  entrypoint:
+    - /app/vendor/bin/drupal
+    - --ansi
+  volumes_from:
+    - source
+    - assets
+  volumes:
+    - "./backups:/app/backup"
+    - "./settings/drush:/app/.drush"
+    - "./settings/drupal-console:/app/.drupal"
+
+    - "~/.gitconfig:/app/.gitconfig:ro"
+    - "~/.ssh:/app/.ssh:ro"
+  links:
+    - db:db.app
+
+# Composer
+composer:
+  description: Run composer as a command in the source folder
+  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  entrypoint: 
+    - composer
+  working_dir: "/app/source"
+  volumes:
+    - "./source:/app/source"  
+    - "~/.gitconfig:/app/.gitconfig:ro"
+    - "~/.ssh:/app/.ssh:ro"

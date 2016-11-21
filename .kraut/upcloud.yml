@@ -1,0 +1,15 @@
+#
+# UPCLOUD
+#
+# Settings used to configure the UpCloud API for the
+# project.
+#
+# This file is only used if the UpCloud components are
+# Initialized.
+#
+#
+
+# Username used for upcloud authorization
+User: jamesnesbitt
+# Upcloud password [this is a tokenized secret value]
+Password: "@(upcloud.account.password)"

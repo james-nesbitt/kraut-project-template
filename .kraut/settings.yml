@@ -1,0 +1,18 @@
+#
+# SETTINGS
+#
+# A Key value storage for string values.
+#
+# @NOTE This simple string key-value was used to start
+#    a project definition, without creating too much 
+#    architecture.
+#    This approach does not meet the needs of defining 
+#    the project, and will be @deprecated when a working
+#    replacement has been developed.
+#
+
+Author: James Nesbitt
+Project: wundertest
+
+Office: Riga
+Country: LV
