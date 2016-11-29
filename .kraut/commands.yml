@@ -7,6 +7,13 @@
 # @KRAUT: this can be used in the form: 
 #    $/> kraut {command} {flags to pass to the container}
 #
+#
+# COMMANDS THAT WE SHOULD BUILD:
+#
+# - backup : run some preconfigured backup
+# - test : run a test suite
+# - theme : run gulp oriented theme tasks
+#
 
 # Give a ZSH tool shell with access to the project containers
 shell:

@@ -1,25 +1,27 @@
 
-# Base implmentation is a local project
-- Type: local
-  Implementations:
-    - config
-    - setting
-    - project
-    - security
+# Each component enables a builder with it's impementations and settings
+Components: 
 
-# Also use the local API for commands and orchestration
-- Type: local
-  Implementations:
-    - orchestrate
-    - command
+  # Base implmentation is a local project
+  - Type: local
+    Implementations:
+      - config
+      - setting
+      - project
+      - security
 
-# Use upcloud (just for testing right now)
-- Type: upcloud
-  Implementations:
-    - monitor
-    - security
-  Settings:
-    Hosts:
-      - 00981597-7203-4402-af2d-6f401b60efc8  
-    Zones:
-      - de-fra1  
+  # Also use the local API for commands and orchestration
+  - Type: local
+    Implementations:
+      - orchestrate
+      - command
+
+  # Use upcloud (just for testing right now)
+  - Type: upcloud
+    Implementations:
+      - monitor
+      - provision
+      - security
+    Settings:
+      Tag:
+        wundertest
