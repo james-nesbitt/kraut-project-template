@@ -1,0 +1,35 @@
+# 
+# SECURITY 
+#
+# This file defines a sequential set of security rules which should
+# be applied to the project.
+#
+# @NOTE while it is not considered secure to use a local file to 
+#   manage local security, this file will also used as an import
+#   source for application of these rules in a production environment
+#   where the yml may get imported into any config source.
+#
+
+Settings:
+
+
+
+Rules:
+
+# Demo to show more options      
+  # - Id: production.wkfi.demooperation
+  #   # Message: User {security.user.name} is not allowed to demo {demo.property.one}
+  #   Operation: demo.operation
+  #   Authorize: Deny # Default is Allow
+  #   Aggregate: OR  # Default is AND, aggregation across properties (not across property values)
+  #   Property:
+  #     demo.property.one:
+  #       - value1
+  #       - value2
+  #     demo.property.two:
+  #       - value3
+  #       - value4
+
+  - Id: Default
+    Operation: "*"
+    Authorize: Allow
