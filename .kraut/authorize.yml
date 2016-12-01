@@ -16,19 +16,22 @@ Settings:
 
 Rules:
 
-# Demo to show more options      
-  # - Id: production.wkfi.demooperation
-  #   # Message: User {security.user.name} is not allowed to demo {demo.property.one}
-  #   Operation: demo.operation
-  #   Authorize: Deny # Default is Allow
-  #   Aggregate: OR  # Default is AND, aggregation across properties (not across property values)
-  #   Property:
-  #     demo.property.one:
-  #       - value1
-  #       - value2
-  #     demo.property.two:
-  #       - value3
-  #       - value4
+  # Demo to show more options      
+  - Id: production.wkfi.demo_operation # Give the rule an id to allow it to be overridden
+    Message: User {security.user.name} is not allowed to demo {demo.property.one}
+    Operation: demo.operation # What operation should we match (regexp and "*"" wildcard allowed)
+    Authorize: Deny # If the rule matches, should we allow or deny
+    Aggregate: OR  # Across Property values, should we AND or OR
+    Operation: demo.operation
+    Property:
+      security.user.name: # This is a property added by the auth system
+        - james.nesbitt  
+      demo.property.one: # this tries to match to properties of the Operation
+        - value1
+        - value2
+      demo.property.two:
+        - value3
+        - value4
 
   - Id: Default
     Operation: "*"

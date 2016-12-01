@@ -1,0 +1,23 @@
+# SECURITY 
+#
+# This file defines a sequential set of security rules which should
+# be applied to the project.
+#
+
+
+Settings:
+
+
+
+Rules:
+
+  - Id: Default
+    Operation: "*"
+    Authorize: Allow
+    Property:
+      security.user.name: # This is a property added by the auth system
+        - james.nesbitt  
+
+  - Id: Default
+    Operation: "*"
+    Authorize: Deny

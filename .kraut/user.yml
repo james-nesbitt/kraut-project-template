@@ -1,2 +1,27 @@
+# USER
+#
+# This file defines the local user for the purposes
+# of authentication.
+#
+# In any production system, the user authentication
+# would be done with a better approach, but this 
+# could facilitate a simple config based approach
+# using an ssh based approach.
+#
+# @NOTE this file doesn't make sense in the project
+# folder, and should go into the user's home kraut
+# folder.
+#
+#  either (checked in this order):
+#    ~/Library/kraut/
+#    ~/.config/kraut/
+#    ~/.kraut/
+#
+
+# @NOTE This is not a place for secrets, just for
+#   user definition
+# @NOTE we should probably try to come up with some
+#   PAM/$(whoami) based defaults
+
 ID: james.nesbitt@wunder.io
 Label: James Nesbitt
