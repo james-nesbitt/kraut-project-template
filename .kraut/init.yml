@@ -1,3 +1,10 @@
+# INIT
+#
+# This is a project building init file that can be used
+# with kraut project.init, to add these files to an existing
+# project.  In an existing project, you can consider using
+# kraut project.generate to build this file.
+#
 - Type: GitClone
   path: 
   Url: git@github.com:james-nesbitt/kraut-project-template.git

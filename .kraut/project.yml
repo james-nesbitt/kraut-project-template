@@ -1,6 +1,27 @@
+# PROJECT
+#
+# Tell kraut what components are a part of the project
+# so that it knows what handlers to use for different
+# operations.
+# This allows a project to mix elements of different
+# service provides.
+# A builder can be used repeatedly, if it knows how to
+# handle being called repeatedly.
+#
+# Builders can be passed settings in this file, but 
+# typically builders will also have their own yml files
+# for settings, especially in complex cases.
+#
 
 # Each component enables a builder with it's impementations and settings
 Components: 
+
+  # Example
+  # - Type: my_custom_builder
+  #   Implementations:
+  #      - security
+  #   Settings:
+  #      {some custom settings to pass to the builder}
 
   # Base implmentation is a local project
   - Type: local
