@@ -37,7 +37,7 @@ Servers:
     Hostname: "kraut"
 
     UserData: |
-      #!/user/bin/bash
+      #!/usr/bin/bash
 
       /usr/bin/coreos-cloudinit --from-url=https://gist.githubusercontent.com/james-nesbitt/059507ec54479c74808ee4003215d46a/raw/8148c9acbca41fe6aded2a7ca23f1e0f57fb58d7/kraut-upcloud-cloudinit.yml
 
