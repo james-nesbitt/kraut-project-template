@@ -37,9 +37,9 @@ Servers:
     Hostname: "kraut"
 
     UserData: |
-      #!/usr/bin/bash
+      #!/user/bin/bash
 
-      /usr/bin/coreos-cloudinit --from-url=https://gist.github.com/james-nesbitt/059507ec54479c74808ee4003215d46a
+      /usr/bin/coreos-cloudinit --from-url=https://gist.githubusercontent.com/james-nesbitt/059507ec54479c74808ee4003215d46a/raw/8148c9acbca41fe6aded2a7ca23f1e0f57fb58d7/kraut-upcloud-cloudinit.yml
 
     User: # Define user and ssh keys for the UpCloud machine
       CreatePassword: false
@@ -67,48 +67,4 @@ Servers:
       #   Family: IPv6
 
     Firewall:
-      Rules:
-        - Action:               "accept"
-          Comment:              "Allow HTTP from anywhere"
-          DestinationPortEnd:   80
-          DestinationPortStart: 80
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             1
-          Protocol:             "tcp"
-        - Action:               "accept"
-          Comment:              "Allow HTTPS from anywhere"
-          DestinationPortEnd:   443
-          DestinationPortStart: 443
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             1
-          Protocol:             "tcp"
-
-        - Action:               "accept"
-          Comment:              "Allow SSH from FI:VPN"
-          DestinationPortEnd:   22
-          DestinationPortStart: 22
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             2
-          Protocol:             "tcp"
-          SourceAddressEnd:     "94.237.33.88"
-          SourceAddressStart:   "94.237.33.88"
-
-        - Action:               "accept"
-          Comment:              "Allow ICMP echo request (ping)"
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             4
-          Protocol:             "icmp"
-          ICMPType:             "8"
-
-        - Action:               "drop"
-          Family:               "IPv4"
-          Comment:              "Global Deny"
-          Direction:            "in"
-        - Action:               "drop"
-          Family:               "IPv6"
-          Comment:              "Global Deny"
-          Direction:            "in"
+      Rules: []
