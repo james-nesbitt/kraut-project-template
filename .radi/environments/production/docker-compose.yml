@@ -11,7 +11,9 @@ services:
   # Source
   #
   source:
-    image: "quay.io/wunder/wunder-alpine-base"
+    # This should be switched to a production source code image
+    # which we should build based on a Dockerfile in the root
+    image: "quay.io/wunder/fuzzy-alpine-base"
     command:
       - /bin/true
     volumes:
@@ -21,6 +23,9 @@ services:
 
   ####
   # Assets
+  #
+  # Volumes here should be adapted to use volume drivers that
+  # can better provide backups etc.
   #
   assets:
     image: quay.io/wunder/wunder-alpine-base
@@ -47,24 +52,22 @@ services:
   # DB node
   #
   db:
-    image: quay.io/wunder/wundertools-image-fuzzy-mariadb
+    image: quay.io/wunder/fuzzy-alpine-mariadb
 
   ####
   # MemCacheD
   #
   memcache:
-    image: quay.io/wunder/alpine-memcached
+    image: quay.io/wunder/fuzzy-alpine-memcached
 
   ####
   # FPM node
   #
   fpm:
-    image: quay.io/wunder/wundertools-image-fuzzy-php
+    image: quay.io/wunder/fuzzy-alpine-php
     volumes_from:
       - source:ro
       - assets
-    environment:
-      KRAUT_ENV: production
     links:
       - db:db.app
       - memcache:memcached.app
@@ -73,13 +76,11 @@ services:
   # WWW node
   #
   www:
-    image: quay.io/wunder/wundertools-image-fuzzy-nginx
+    image: quay.io/wunder/fuzzy-alpine-nginx-pagespeed-drupal
     hostname: www.myproject.com
     volumes_from:
       - source:ro
       - assets:ro
-    environment:
-      KRAUT_ENV: production
     links:
       - fpm:fpm.app
 
@@ -87,7 +88,7 @@ services:
   # Static cache service
   #
   varnish:
-    image: quay.io/wunder/alpine-varnish
+    image: quay.io/wunder/fuzzy-alpine-varnish
     environment:
       VARNISH_BACKEND_HOST: backend.app
     links:
