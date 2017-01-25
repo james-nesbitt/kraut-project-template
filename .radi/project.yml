@@ -1,6 +1,6 @@
 # PROJECT
 #
-# Tell kraut what components are a part of the project
+# Tell radi what components are a part of the project
 # so that it knows what handlers to use for different
 # operations.
 # This allows a project to mix elements of different

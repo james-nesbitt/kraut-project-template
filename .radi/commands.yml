@@ -5,7 +5,7 @@
 # be used withing the scope of the project.
 #
 # @KRAUT: this can be used in the form: 
-#    $/> kraut {command} {flags to pass to the container}
+#    $/> radi {command} {flags to pass to the container}
 #
 #
 # COMMANDS THAT WE SHOULD BUILD:
@@ -18,7 +18,7 @@
 # Give a ZSH tool shell with access to the project containers
 shell:
   description: Give a command shell, with access to the application
-  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  image: quay.io/wunder/fuzzy-alpine-devshell
   hostname: "shell"
   working_dir: /app
   volumes_from:
@@ -30,7 +30,7 @@ shell:
     - "./source:/app/source"
     - "./settings:/app/settings"
     - "./assets:/app/assets" 
-    - "./backups:/app/backup"
+    - "./assets/backup:/app/backup"
     - "./settings/drush:/app/.drush"
     - "./settings/drupal-console:/app/.drupal"
 
@@ -44,7 +44,7 @@ shell:
 # Initialize a new Drupal project using the composer project
 drupal-init:
   description: Create a new Drupal8 project in ./source
-  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  image: quay.io/wunder/fuzzy-alpine-devshell
   hostname: "shell"
   entrypoint:
     - composer 
@@ -62,7 +62,7 @@ drupal-init:
 # Drupal Console
 drupal:
   description: Run drupal console on the application
-  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  image: quay.io/wunder/fuzzy-alpine-devshell
   working_dir: /app/web
   entrypoint:
     - /app/vendor/bin/drupal
@@ -83,7 +83,7 @@ drupal:
 # Composer
 composer:
   description: Run composer as a command in the source folder
-  image: quay.io/wunder/wundertools-image-fuzzy-developershell
+  image: quay.io/wunder/fuzzy-alpine-devshell
   entrypoint: 
     - composer
   working_dir: "/app/source"

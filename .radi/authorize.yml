@@ -18,7 +18,7 @@ Rules:
 
   # Demo to show more options      
   - Id: production.wkfi.demo_operation # Give the rule an id to allow it to be overridden
-    Message: User {security.user.name} is not allowed to demo {demo.property.one}
+    Message: "User {security.user.name} is not allowed to demo {demo.property.one}"
     Operation: demo.operation # What operation should we match (regexp and "*"" wildcard allowed)
     Authorize: Deny # If the rule matches, should we allow or deny
     Aggregate: OR  # Across Property values, should we AND or OR
