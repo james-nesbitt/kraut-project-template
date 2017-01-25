@@ -34,7 +34,7 @@ services:
   #  - yml configuration
   #
   source:
-    image: "quay.io/wunder/wunder-alpine-base"
+    image: "quay.io/wunder/fuzzy-alpine-base"
     command:
       - /bin/true
     volumes:
@@ -51,7 +51,7 @@ services:
   # docker volumes.
   #
   assets:
-    image: quay.io/wunder/wunder-alpine-base
+    image: quay.io/wunder/fuzzy-alpine-base
     command:
       - /bin/true
     volumes:
@@ -75,13 +75,13 @@ services:
   # DB node
   #
   db:
-    image: quay.io/wunder/wundertools-image-fuzzy-mariadb
+    image: quay.io/wunder/fuzzy-alpine-mariadb
 
   ####
   # MemCacheD
   #
   memcache:
-    image: quay.io/wunder/alpine-memcached
+    image: quay.io/wunder/fuzzy-alpine-memcached
 
   ####
   # FPM node
@@ -90,7 +90,7 @@ services:
   #
 
   fpm:
-    image: quay.io/wunder/wundertools-image-fuzzy-php-developer
+    image: quay.io/wunder/fuzzy-alpine-php-dev
     volumes_from:
       - source
       - assets
@@ -107,7 +107,7 @@ services:
   # @NOTE in production, the assets volumes should be assets:ro
   #
   www:
-    image: quay.io/wunder/wundertools-image-fuzzy-nginx
+    image: quay.io/wunder/fuzzy-alpine-nginx-pagespeed-drupal
     volumes_from:
       - source
       - assets
@@ -120,7 +120,7 @@ services:
   # Static cache service
   #
   varnish:
-    image: quay.io/wunder/alpine-varnish
+    image: quay.io/wunder/fuzzy-alpine-varnish
     environment:
       DNSDOCK_ALIAS: wundertest.docker
       VARNISH_BACKEND_HOST: backend.app

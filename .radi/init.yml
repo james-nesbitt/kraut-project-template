@@ -1,0 +1,10 @@
+# INIT
+#
+# This is a project building init file that can be used
+# with radi project.init, to add these files to an existing
+# project.  In an existing project, you can consider using
+# radi project.generate to build this file.
+#
+- Type: GitClone
+  path: 
+  Url: git@github.com:wunderkraut/radi-project-template.git

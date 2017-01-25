@@ -16,10 +16,18 @@
 # Request.
 #
 Access:
-  # Username used for upcloud authorization
-  User: jamesnesbitt2
+  # Username
+  mesnesbitt2
   # Upcloud password [this should be a tokenized secret value]
-  Password: "SOMEPASSWORD"
+  Password: "SOMEPASSWORDHERE"
+
+Rancher:
+  Master:
+    # You should know the url for a rancher master, if you will use rancher for provisioning.
+    Url: 94.237.33.56:8080
+    User:
+      Name: radi-dev-api
+      Password: "SOMEPASSWORDHERE"
 
 # SERVERS
 #
@@ -27,23 +35,23 @@ Access:
 #
 Servers:
 
-  - Id: "kraut-1"               # kraut internal id (currently unused)
+  - Id: "radi-1-james"               # radi internal id (currently unused)
     Title: "KRAUT TEST SERVER"  # UpCloud id
     Plan: "1xCPU-1GB"
 
     Zone: "fi-hel1"
     TimeZone: "Europe/Helsinki"
 
-    Hostname: "kraut"
+    Hostname: "radi"
 
     UserData: |
       #!/usr/bin/bash
 
-      /usr/bin/coreos-cloudinit --from-url=https://gist.github.com/james-nesbitt/059507ec54479c74808ee4003215d46a
+      /usr/bin/coreos-cloudinit --from-url=https://gist.githubusercontent.com/james-nesbitt/059507ec54479c74808ee4003215d46a/raw/ddfd12cf264a66fe5c6e90c7843e196d076fd08a/radi-upcloud-cloudinit.yml
 
     User: # Define user and ssh keys for the UpCloud machine
       CreatePassword: false
-      Username: "kraut"
+      Username: "radi"
       SSHKeys:
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDEI7j4EaK2RRKgp7rA9gDIL279WtNBWsPQwKn6YNjb7i1EUAM+IYzdQbPgpYr0rMx67DhvbK1pBeL0HTXfk1ZnSbbZe2xktk+YJo6l8zQ7wYydWMcCcB5HUvgG1/ugTj6wxImYAx7sEuXY4MVO7aHmfMnjV+7Re0uXHjAPL9k5O2Xvt75RmrgG8YpE6MvZtYTzIRmINbuSAX9CWKi46ZuRNYKDyZTSarqA1TOaGKiO6vf2dM7bWqsvitOxwEC6Z0c5nIAjcAGhg+yBEEloWTqNqkxPzbh0AIIO9HjGlnbSaIffwrv78UzrHatukUQOcsg6PBvMPvhjdoB0JrscLneDy0DhF6ptAQporg3SieypB/3hiZ0RfT94c35DQufFphfsphIBXIsqENJKR383sz57PPDtVgyXKSu5ujhXUPgC1rwldGUqVtMLsvC4tcnOIbOK917QjUQ+8cJoC08XBUG10knUoIWP8ebv55sfnBTHW27g+4B1V6ub3Zyq/ZRzeJXWzSh1QmOUXp1Q47bEz3eT2/VRtKyUYAo3ChvceMSERsVtwfRgIcAreIqGy2GJQPe7NkYOAPrirwhfppoFJ/nx3xGFjg0iZIg4Z1nTpwEWBWcC5eo/yfORnhdAooJWRYO37nOrjryUZJsRbFC/Uj7JOIX2QrZEX1bm4SwgSF8tTQ=="
         - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6ycn3RQXU48uRlqGT85cxWuiKeW5nXgp1jlA6NqD8nlXBv/MFBy4gm9g+C1KlA2diF8XHOdRuhiiR6zmO2qOWTqTPxzQyuU3uOKqFHq7ZDRYum8MlCaJ6U2TEZcV36IrpQCyRQbu82GThXkJK8doNfFuwlJuFJuOk4cdXlAKLAIkLI4XiXE7XKE7yX5OMs4WHJPS0GH4Xe8uU/N1aKJ+u8Xr9A5JjScBI1sAnTO6oPbWaYzeGg56kkv2/y2UObMh6ULIXYvQ/deGE22mimsz2NcIAgi9A8wYSCAt741EIyWEF5Ftbxq+gNV22/oZSJuf6aMNft66aBQzE4EtpXu31"
@@ -67,48 +75,4 @@ Servers:
       #   Family: IPv6
 
     Firewall:
-      Rules:
-        - Action:               "accept"
-          Comment:              "Allow HTTP from anywhere"
-          DestinationPortEnd:   80
-          DestinationPortStart: 80
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             1
-          Protocol:             "tcp"
-        - Action:               "accept"
-          Comment:              "Allow HTTPS from anywhere"
-          DestinationPortEnd:   443
-          DestinationPortStart: 443
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             1
-          Protocol:             "tcp"
-
-        - Action:               "accept"
-          Comment:              "Allow SSH from FI:VPN"
-          DestinationPortEnd:   22
-          DestinationPortStart: 22
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             2
-          Protocol:             "tcp"
-          SourceAddressEnd:     "94.237.33.88"
-          SourceAddressStart:   "94.237.33.88"
-
-        - Action:               "accept"
-          Comment:              "Allow ICMP echo request (ping)"
-          Direction:            "in"
-          Family:               "IPv4"
-          Position:             4
-          Protocol:             "icmp"
-          ICMPType:             "8"
-
-        - Action:               "drop"
-          Family:               "IPv4"
-          Comment:              "Global Deny"
-          Direction:            "in"
-        - Action:               "drop"
-          Family:               "IPv6"
-          Comment:              "Global Deny"
-          Direction:            "in"
+      Rules: []
