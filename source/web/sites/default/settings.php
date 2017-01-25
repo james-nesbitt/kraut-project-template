@@ -285,7 +285,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'adQbeQKLI3m0WFqZA3L6612ifEd3cKyC-rS8nBfWA7o7bHOHQCgnD6XAN62umUm6maiTKywvnA';
+$settings['hash_salt'] = '';
 
 /**
  * Deployment identifier.
@@ -667,7 +667,7 @@ if ($settings['hash_salt']) {
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
+$settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 
 /**
  * Override the default service container class.
@@ -749,18 +749,7 @@ $settings['file_scan_ignore_directories'] = [
  *
  * Keep this code block at the end of this file to take full effect.
  */
-# if (file_exists(__DIR__ . '/settings.local.php')) {
-#   include __DIR__ . '/settings.local.php';
+#
+# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+#   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = array (
-  'database' => 'app',
-  'username' => 'app',
-  'password' => 'app',
-  'prefix' => '',
-  'host' => 'db.app',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-$settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/files/config_dTrIBsgBaeDNkoBbr8yD5AYD29I4v2OjN86alLUfovk2aWOFCKowSyvoEi7-Umy5d_bMnZqJ3A/sync';
