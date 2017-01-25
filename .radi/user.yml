@@ -9,13 +9,13 @@
 # using an ssh based approach.
 #
 # @NOTE this file doesn't make sense in the project
-# folder, and should go into the user's home kraut
+# folder, and should go into the user's home radi
 # folder.
 #
 #  either (checked in this order):
-#    ~/Library/kraut/
-#    ~/.config/kraut/
-#    ~/.kraut/
+#    ~/Library/radi/
+#    ~/.config/radi/
+#    ~/.radi/
 #
 
 # @NOTE This is not a place for secrets, just for

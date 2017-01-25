@@ -1,0 +1,61 @@
+curl  \
+-X POST \
+-H 'Content-Type: application/json' \
+-d '{
+	"description": "some key",
+	"name": "testradi"
+}' 'http://localhost:8080/v1/apiKeys'
+
+
+
+curl -u "E0F2BCFA08D8811AEC6C:kYd7cCDGoQpq6sa2KYKeeVus7F4UhXQpP7dkMaUY" \
+-X POST \
+-H 'Content-Type: application/json' \
+-d '{
+	"description": "my host",
+	"name": "newhost"
+}' 'http://localhost:8080/v1/registrationTokens'
+
+
+curl -u "${CATTLE_ACCESS_KEY}:${CATTLE_SECRET_KEY}" \
+-X POST \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{"description":"test", "name":"test"}' \
+'http://94.237.33.56:8080/v2-beta/projects/1a5/registrationtokens'
+
+
+{
+"id": "1c10",
+"type": "registrationToken",
+"links": {
+"self": "…/v2-beta/projects/1a5/registrationtokens/1c10",
+"account": "…/v2-beta/projects/1a5/registrationtokens/1c10/account",
+"images": "…/v2-beta/projects/1a5/registrationtokens/1c10/images",
+"instances": "…/v2-beta/projects/1a5/registrationtokens/1c10/instances"
+},
+"actions": {
+"activate": "…/v2-beta/projects/1a5/registrationtokens/1c10/?action=activate",
+"remove": "…/v2-beta/projects/1a5/registrationtokens/1c10/?action=remove",
+"deactivate": "…/v2-beta/projects/1a5/registrationtokens/1c10/?action=deactivate"
+},
+"baseType": "credential",
+"name": "test",
+"state": "registering",
+"accountId": "1a5",
+"command": null,
+"created": "2016-12-15T14:23:45Z",
+"createdTS": 1481811825000,
+"description": "test",
+"image": null,
+"kind": "registrationToken",
+"registrationUrl": null,
+"removed": null,
+"token": null,
+"transitioning": "yes",
+"transitioningMessage": "In Progress",
+"transitioningProgress": null,
+"uuid": "d1dd392f-c2fc-4b51-a121-e642d70d15b2"
+}
+
+while [ "$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/v2-beta)" != "200" ]; do echo "still asleep"; sleep 1; done

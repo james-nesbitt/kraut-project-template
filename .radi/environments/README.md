@@ -1,7 +1,7 @@
 # Environments
 
 In this folder should be kept various other scope folders
-which can be used to override project settings, if kraut
+which can be used to override project settings, if radi
 is told that the environment is active.
 
 The primary purpose for environments is to allow for
