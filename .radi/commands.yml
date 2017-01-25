@@ -30,7 +30,7 @@ shell:
     - "./source:/app/source"
     - "./settings:/app/settings"
     - "./assets:/app/assets" 
-    - "./backups:/app/backup"
+    - "./assets/backup:/app/backup"
     - "./settings/drush:/app/.drush"
     - "./settings/drupal-console:/app/.drupal"
 

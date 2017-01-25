@@ -17,7 +17,7 @@
 #
 Access:
   # Username
-  mesnesbitt2
+  User: jamesnesbitt2
   # Upcloud password [this should be a tokenized secret value]
   Password: "SOMEPASSWORDHERE"
 
